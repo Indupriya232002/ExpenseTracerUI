@@ -44,3 +44,46 @@ body {
     padding: 10px;
     color: white;
   }
+
+  /* Global Swal Dark Theme */
+.swal2-popup {
+  background: #333 !important;  /* Dark background */
+  color: #fff !important;       /* White text */
+  border-radius: 10px;          /* Rounded corners */
+}
+
+.swal2-title {
+  color: #fff !important;       /* Title in white */
+}
+
+.swal2-content {
+  color: #ddd !important;       /* Content in light gray */
+}
+
+.swal2-confirm {
+  background: #008cff !important;  /* Blue button */
+  color: #fff !important;
+  border: none !important;
+}
+
+.swal2-cancel {
+  background: #ff5050 !important;  /* Red cancel button */
+  color: #fff !important;
+  border: none !important;
+}
+
+.swal2-confirm:hover {
+  background: #0066cc !important;  /* Darker blue on hover */
+}
+
+.swal2-cancel:hover {
+  background: #cc0000 !important;  /* Darker red on hover */
+}
+
+.swal2-icon {
+  border-color: #fff !important;  /* White icon border */
+}
+
+.swal2-icon-content {
+  color: #fff !important;         /* Icon color */
+}

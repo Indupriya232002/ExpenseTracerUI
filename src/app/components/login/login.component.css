@@ -8,6 +8,20 @@ html, body {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    background-color: #131722;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+.background {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
 }
 
 /* Navbar */
@@ -30,6 +44,7 @@ html, body {
 .logo {
     font-size: 22px;
     font-weight: bold;
+    color: #ffb400;
 }
 
 /* Navbar Items */
@@ -51,15 +66,16 @@ html, body {
 
 .nav-items a:hover {
     text-decoration: underline;
+    color: #ffb400;
 }
 
 /* Login Container */
 .login-container {
     width: 500px;
     height: auto;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: #1c1f2a;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
     text-align: center;
     position: fixed;
     top: 50%;
@@ -70,12 +86,19 @@ html, body {
     pointer-events: auto; /* Ensures normal interaction */
     touch-action: none;
     margin: auto;
-    padding: 20px;
-
+    padding: 30px;
+    text-align: left;
 }
-
-
-
+.login-title {
+    text-align: center;
+    color: #ffb400;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.login-container h2 {
+    margin-bottom: 20px;
+    color: #ffb400;
+}
 
 /* Input Fields */
 input {
@@ -85,7 +108,23 @@ input {
     border: 1px solid gray;
     border-radius: 5px;
     font-size: 16px;
+    margin-bottom: 15px;
     box-sizing: border-box; /* Ensures padding doesn't increase width */
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ffb400;
+    border-radius: 5px;
+    background: #232736;
+    color: white;
 }
 
 /* Labels */
@@ -98,19 +137,35 @@ label {
 
 /* Login Button */
 button {
+    padding: 12px 25px;
     width: 95%;
     padding: 12px;
-    background: black;
-    color: white;
+    background: #ffb400;
+    color: black;
     border: none;
     cursor: pointer;
     margin-top: 10px;
     font-size: 16px;
     border-radius: 5px;
+    font-weight: bold;
 }
 
+/* button {
+    width: 84%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 0;
+    margin-top: 10px;
+    margin-left: 30px;
+    border-radius: 4px;
+} */
+
 button:hover {
-    background: gray;
+    background: white;
+    color: black;
 }
 
 /* Signup Link */
@@ -120,7 +175,7 @@ p {
 }
 
 p a {
-    color: #007bff;;
+    color: #ffb400;
     text-decoration: none;
 }
 
@@ -164,32 +219,25 @@ p a:hover {
   .password-wrapper + .text-danger {
     margin-top: 8px; /* Space between input and validation message */
   }
+  .signup-link {
+    margin-top: 10px;
+    font-size: 14px;
+    text-align: center;
+}
 
-  .register-link {
-    color: #007bff;
-    text-decoration: none;
+
+.register-link {
+    color: #ffb400;
 }
 
 .register-link:hover {
     text-decoration: underline;
-    color: #007bff;
+    color: #ffb400;
 }
 
-button {
-    width: 84%;
-    padding: 12px;
-    background-color: #007bff;
-    color: white;
-    font-size: 18px;
-    border: none;
-    border-radius: 0;
-    margin-top: 10px;
-    margin-left: 30px;
-    border-radius: 4px;
-}
 
 a {
-    color: #007bff;
+    color: #ffb400;
     text-decoration: none;
 }
 
@@ -219,11 +267,7 @@ a {
   }
 
 
-.login-title {
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
-}
+
 
 .form-group {
     margin-bottom: 15px;
@@ -242,14 +286,13 @@ a {
     font-size: 14px;
 }
 
-
 .forgot {
     display: block;
     text-align: left;
     font-size: 14px;
     margin-bottom: 15px;
     text-decoration: none;
-    color: #007bff;
+    color: #ffb400;
 }
 
 .forgot:hover {
@@ -259,7 +302,7 @@ a {
 .btn-login {
     width: 99%;
     padding: 10px;
-    background: #007bff;
+    background: #ffb400;;
     border: none;
     color: white;
     font-size: 16px;
@@ -269,7 +312,8 @@ a {
 }
 
 .btn-login:hover {
-    background: #0056b3;
+    background: white;
+    color: black;
 }
 
 .password-wrapper {

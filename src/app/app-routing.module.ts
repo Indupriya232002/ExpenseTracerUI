@@ -19,7 +19,7 @@ const routes: Routes = [
   {path:'forgotpassword',component:ForgotpasswordComponent},
   {path:'otpverification',component:OtpverificationComponent},
   {path:'resetpassword',component:ResetpasswordComponent},
-  {path:'sideBar',component:SideBarComponent,canActivate: [AuthGuard] }
+  {path:'sidebar',component:SideBarComponent,canActivate: [AuthGuard] }
 ];
 
 @NgModule({

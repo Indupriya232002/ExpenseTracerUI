@@ -48,13 +48,13 @@
         style="display: flex;flex-direction: column;gap: 1em;">
         <div class="row" style="padding: 1em;">
             <div class="card" style="width: 100%;text-align: center;">
-                <h1 style="padding-top: 10px;font-weight: 600;">Expense Analysis</h1>
+                <h1 style="padding-top: 10px;font-weight: 600;">{{headName}}</h1>
             </div>
         </div>
         <div class="row" *ngIf="switchScreen == 1">
             <div class="col-md-6">
                 <div class="row" style="text-align: center;">
-                    <h2 style="width: 100%;">Current month Analysis</h2>
+                    <h2 style="width: 100%;">All Expenses</h2>
                 </div>
                 <div class="card" style="display: flex;align-items: center;">
                     <div echarts [options]="chartOptions" class="chart-container"></div>
@@ -62,11 +62,114 @@
             </div>
             <div class="col-md-6" style="display: flex;flex-direction: column;gap: 1em;">
                 <div class="row" style="text-align: center;">
-                    <h2 style="width: 100%;margin: 0;">Expensive List</h2>
+                    <h2 style="width: 100%;margin: 0;">Expense List</h2>
                 </div>
                 <div class="row" *ngFor="let item of expensiveList">
                     <div class="card move-up-on-hover" style="width: 97%;border: solid;border-color: #ff8c00;">
-                        <span class="deleteIcon"><i aria-hidden="true" class="fa fa-times"></i></span>
+                        <span class="deleteIcon" (click)="deleteExpense(item.expenseId)"><i aria-hidden="true" class="fa fa-times"></i></span>
+                        <div class="row">
+                            <div class="col-8">
+                                <h5>{{ item.name }}</h5>
+                                <p>Amount: {{ item.expenditure }}</p>
+                                <p>Date: {{ item.date }}</p>
+                            </div>
+                            <div class="col-4" style="display: flex;align-items: center;justify-content: flex-end;">
+                                <ul class="user-list">
+                                    <li>
+                                        <div class="user-icon primary">
+                                            <div class="user-box">
+                                                <i class="fa fa-money return-image" aria-hidden="true"
+                                                    style="font-size: 2em;color:rgb(115 102 255);"></i>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="switchScreen == 2">
+            <div class="col-md-12">
+                <div class="date-filter-row">
+                    <div class="date-field">
+                        <label>Start Date:</label>
+                        <input type="date" [(ngModel)]="startDate" class="form-control" />
+                    </div>
+        
+                    <div class="date-field">
+                        <label>End Date:</label>
+                        <input type="date" [(ngModel)]="endDate" class="form-control" />
+                    </div>
+        
+                    <div class="get-expenses-btn">
+                        <button class="btn btn-primary" style="padding: 7px;" (click)="filterExpenses()">Get Expenses</button>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Chart Section -->
+            <div class="col-md-6">
+                <div class="row" style="text-align: center;">
+                    <h2 style="width: 100%;">Monthly Analysis</h2>
+                </div>
+                <div class="card" style="display: flex; align-items: center;">
+                    <div echarts [options]="chartForMonthly" class="chart-container"></div>
+                </div>
+            </div>
+        
+            <!-- Expense List -->
+            <div class="col-md-6" style="display: flex; flex-direction: column; gap: 1em;">
+                <div class="row" style="text-align: center;">
+                    <h2 style="width: 100%; margin: 0;">Expense List</h2>
+                </div>
+        
+                <div class="row" *ngFor="let item of expensiveList">
+                    <div class="card move-up-on-hover" style="width: 97%; border: solid; border-color: #ff8c00;">
+                        <span class="deleteIcon" (click)="deleteExpense(item.expenseId)">
+                            <i aria-hidden="true" class="fa fa-times"></i>
+                        </span>
+                        <div class="row">
+                            <div class="col-8">
+                                <h5>{{ item.name }}</h5>
+                                <p>Amount: {{ item.expenditure || 'N/A' }}</p>
+                                <p>Date: {{ item.date || 'N/A' }}</p>                                
+                            </div>
+                            <div class="col-4" style="display: flex; align-items: center; justify-content: flex-end;">
+                                <ul class="user-list">
+                                    <li>
+                                        <div class="user-icon primary">
+                                            <div class="user-box">
+                                                <i class="fa fa-money return-image" aria-hidden="true"
+                                                    style="font-size: 2em; color: rgb(115 102 255);"></i>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row" *ngIf="switchScreen == 3">
+            <div class="col-md-6">
+                <div class="row" style="text-align: center;">
+                    <h2 style="width: 100%;">Daily Analysis</h2>
+                </div>
+                <div class="card" style="display: flex;align-items: center;">
+                    <div echarts [options]="barChartOptions" class="chart-container"></div>
+                </div>
+            </div>
+            <div class="col-md-6" style="display: flex;flex-direction: column;gap: 1em;">
+                <div class="row" style="text-align: center;">
+                    <h2 style="width: 100%;margin: 0;">Expense List</h2>
+                </div>
+                <div class="row" *ngFor="let item of expensiveList">
+                    <div class="card move-up-on-hover" style="width: 97%;border: solid;border-color: #ff8c00;">
+                        <span class="deleteIcon" (click)="deleteExpense(item.expenseId)"><i aria-hidden="true" class="fa fa-times"></i></span>
                         <div class="row">
                             <div class="col-8">
                                 <h5>{{ item.name }}</h5>
@@ -100,46 +203,56 @@
 
 <ng-template #content let-modal>
     <div class="card">
-        <form (ngSubmit)="onSubmit()">
-            <div class="card-header" style="padding: 0;">
-                <div class="row">
-                    <div class="col-10" style="display: flex;align-items: center;">
-                        <h2>Add Expense</h2>
-                    </div>
-                    <div class="col-2">
-                        <button type="button" class="close" style="padding: 0;"
-                            (click)="modal.dismiss('Cross click')">&times;</button>
-                    </div>
-                </div>
+      <form #expenseForm="ngForm" (ngSubmit)="onSubmit()">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-10"><h1>Add Expense</h1></div>
+            <div class="col-2">
+              <button type="button" class="close" (click)="modal.dismiss('Cross click')">&times;</button>
             </div>
-
-            <div class="card-body">
-
-                <div class="input-group">
-                    <label> Expendature ₹</label>
-                    <input type="text" [(ngModel)]="expenseData.expenditure" placeholder="0" name="expenditure" />
-                </div>
-
-                <div class="input-group">
-                    <input type="text" [(ngModel)]="expenseData.name" placeholder="What was this expense for?"
-                        name="name" />
-                </div>
-
-                <div class="input-group">
-                    <input type="date" [(ngModel)]="expenseData.date" name="date" />
-                </div>
-                <div class="input-group">
-                    <select [(ngModel)]="expenseData.category" name="category">
-                        <option value="">Select a category</option>
-                        <option value="General">General</option>
-                        <option value="Food">Food</option>
-                        <option value="Transport">Transport</option>
-                    </select>
-                </div>
-            </div>
-            <div class="card-footer" style="padding: 0;">
-                <button type="submit">Save Expense</button>
-            </div>
-        </form>
+          </div>
+        </div>
+  
+        <div class="card-body">
+          <div class="input-group">
+            <label>Expenditure ₹</label>
+            <input type="text" [(ngModel)]="expenseData.expenditure" placeholder="0" name="expenditure" required #expenditure="ngModel" />
+            <div class="error-message" *ngIf="isSubmitted && expenditure.invalid">Expenditure is required</div>
+          </div>
+  
+          <div class="input-group">
+            <input type="text" [(ngModel)]="expenseData.name" placeholder="What was this expense for?" name="name" required #name="ngModel" />
+            <div class="error-message" *ngIf="isSubmitted && name.invalid">Name is required</div>
+          </div>
+  
+          <div class="input-group">
+            <input type="date" [(ngModel)]="expenseData.date" name="date" required #date="ngModel" />
+            <div class="error-message" *ngIf="isSubmitted && date.invalid">Date is required</div>
+          </div>
+  
+          <div class="input-group">
+            <select [(ngModel)]="expenseData.category" name="category" required #category="ngModel">
+              <option value="">Select a category</option>
+              <option value="General">General</option>
+              <option value="Food">Food</option>
+              <option value="Transport">Transport</option>
+              <option value="Shopping">Shopping</option>
+              <option value="Grocery">Grocery</option>
+              <option value="Fuel">Fuel</option>
+              <option value="Fun">Fun</option>
+            </select>
+            <div class="error-message" *ngIf="isSubmitted && category.invalid">Category is required</div>
+          </div>
+        </div>
+  
+        <div class="card-footer">
+          <button type="submit">Save Expense</button>
+        </div>
+      </form>
     </div>
-</ng-template>
+  </ng-template>
+  
+  
+
+
+

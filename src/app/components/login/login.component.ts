@@ -22,7 +22,8 @@ export class LoginComponent {
   emailErrorMessage = '';
   passwordErrorMessage = '';
   isPasswordVisible = false;
-
+  showPassword: boolean = false;
+  showConfirmPassword: boolean = false;
   constructor(private userservice: UsersService, private router: Router) {}
 
   togglePasswordVisibility(): void {
@@ -79,7 +80,7 @@ export class LoginComponent {
             title: 'Login Successful',
             text: 'You have successfully logged in!',
           }).then(() => {
-            this.router.navigate(['/sideBar']);
+            this.router.navigate(['/sidebar']);
             this.resetForm();
           });
 

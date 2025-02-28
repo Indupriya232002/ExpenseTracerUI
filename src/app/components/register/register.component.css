@@ -3,10 +3,11 @@ html, body {
     margin: 0;
     padding: 0;
     height: 100%;
-    background: #f4f4f4;
+    background: #121212; /* Dark Theme Background */
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-family: 'Arial', sans-serif;
 }
 
 /* Navbar */
@@ -17,8 +18,8 @@ html, body {
     justify-content: space-between;
     align-items: center;
     padding: 10px 50px;
-    background: rgba(0, 0, 0, 0.4);
-    color: white;
+    background: rgba(0, 0, 0, 0.7); /* Dark Navbar */
+    color: gold; /* Gold Text */
     position: fixed;
     top: 0;
     left: 0;
@@ -43,7 +44,7 @@ html, body {
 }
 
 .nav-items a {
-    color: white;
+    color: gold; /* Gold Links */
     text-decoration: none;
     font-size: 16px;
 }
@@ -55,109 +56,118 @@ html, body {
 /* Register Container */
 .register-container {
     width: 600px;
-    padding: 20px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    background: #1c1f2a; /* Dark Gray */
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
     text-align: center;
-    position: relative;
-    top: 50%;
+    position: absolute;
+    top: 13%;
     left: 30%;
-    margin-top: 80px;
+    color: white;
 }
-
-/* Input Fields */
-
+   
 /* Labels */
 label {
-    font-size: 14px;
     text-align: left;
     display: block;
     margin-top: 10px;
+    margin-left: 0px;
+}
+/* Input Fields */
+.form-control {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border-radius: 5px;
+    background: white; /* Dark Input */
+    color: black;
+    font-size: 16px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ffb400;
+    border-radius: 5px;
+    background: #232736;
+    color: white;
 }
 
 /* Register Button */
 button {
-    width: 95%;
-    padding: 12px;
-    background: black;
+    width: 100%;
+    padding: 14px;
+    background: gold; /* Gold Button */
     color: white;
     border: none;
     cursor: pointer;
     margin-top: 10px;
-    font-size: 16px;
+    font-size: 18px;
+    font-weight: bold;
     border-radius: 5px;
 }
 
 button:hover {
-    background: gray;
+    background: white; /* Lighter Gold */
+    color:black
 }
-
-/* Already have an account? Login */
-.already-account {
-    margin-top: 10px;
-}
-
-.already-account p {
-    font-size: 14px;
-}
-
-.login-link {
-    color: #007bff;;
-    text-decoration: none;
-}
-
-.login-link:hover {
+.login-link{
+    color: #ffb400;
     text-decoration: underline;
 }
 
+.login-link:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+/* Required Asterisk */
 .required-star {
     color: red;
     font-weight: bold;
-  }
+}
 
-  .form-group {
-    margin-bottom: 20px;
-    position: relative;
-  
-  }
-  
-  .text-danger {
+
+
+/* Error Messages */
+.text-danger {
     color: red;
     font-size: 14px;
     margin-top: 5px;
     display: block;
     text-align: left;
-    margin-left: 14px;
-  }
+    margin-left: 10px;
+}
 
-  .password-wrapper {
+/* Password Wrapper */
+.password-wrapper {
     position: relative;
-    width: 100%; /* Adjust the width as per your design */
-  }
-  
-  .password-wrapper input {
-    width: 100%; /* Make the input field take full width */
-    padding-right: 40px; /* Adjust padding to make space for the eye icon */
-    box-sizing: border-box; /* Ensures padding is inside the width */
-    height: 40px; 
-  }
-  
-  .toggle-password {
+    width: 100%;
+}
+
+.password-wrapper input {
+    width: 100%;
+    padding-right: 40px; /* Space for the eye icon */
+}
+
+/* Eye Icon for Password Toggle */
+.toggle-password {
     position: absolute;
-    right: 87px;
-    top: 68%;
-    transform: translateY(-50%); /* Vertically center the icon */
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
     cursor: pointer;
-    font-size: 18px; /* Adjust the size of the icon */
-    color: #333; /* You can change this color based on your theme */
-    pointer-events: auto; /* Ensures clickability */
-  }
-  
-  .toggle-password i {
-    font-size: 1.1em; /* Size of the eye icon */
-  }
-  
-  .password-wrapper + .text-danger {
-    margin-top: 8px; /* Space between the input and validation message */
-  }
+    font-size: 18px;
+    color: #FFD700;
+}
+
+.toggle-password:hover {
+    color: #FFC107;
+}

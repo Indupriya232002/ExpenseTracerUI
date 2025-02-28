@@ -1,19 +1,23 @@
-<div class="background">
+ <div class="background">
     <nav class="navbar">
-      <div class="logo">ExpenseTracker</div>
+      <div class="logo">Expense Tracker</div>
       <ul class="nav-items">
-        <li><a href="#">About</a></li>
-        <li><a routerLink="/login">Login</a></li>
-        <li><a href="/signup">SignUp</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="/login" class="login-btn">Login</a></li>
       </ul>
     </nav>
-  
+
     <div class="content">
-      <h1>ExpenseTracker</h1>
-      <p>Welcome to Expense Manager</p>
-      <p>Less stress when sharing expenses with your housemates, friends, or anyone.</p>
-      <p>Keep track of your personal and shared expenses and balances.</p>
-      <!-- <button>View Expenses</button> -->
+      <span>
+        <h1 class="highlight">Expense Tracker</h1>
+      </span>
+      <span>
+        <h2 style="margin-top: 15px;">Welcome to Expense Manager</h2>
+      </span>
+      <span>
+        <h2 style="margin-top: 25px;">Keep track of your personal and shared expenses and balances.</h2>
+      </span>
+      <button class="get-started" (click)="signUp()">Get Started →</button>
     </div>
-  </div>
-  
+</div>
+

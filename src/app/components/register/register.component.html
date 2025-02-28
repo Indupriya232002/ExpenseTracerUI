@@ -1,64 +1,66 @@
 <!-- Navbar -->
 <div class="navbar">
-    <div class="logo">Expense Tracker</div>
-    <ul class="nav-items">
-        <!-- <li><a routerLink="/login">Login</a></li>
-        <li><a routerLink="/register">Register</a></li> -->
-        <li><a routerLink="/welcome">Home</a></li>
-    </ul>
+  <div class="logo">Expense Tracker</div>
+  <ul class="nav-items">
+      <li><a routerLink="/welcome">Home</a></li>
+  </ul>
 </div>
 
 <!-- Registration Form -->
 <div class="register-container">
-    <h2>Register</h2>
-    <div class="form-group">
-        <label for="firstName">First Name <span class="required-star" style="color: red;">*</span></label>
-        <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="user.firstName"  required />
-         <div *ngIf="validateFirstName && !user.firstName" class="text-danger">First Name is Required.</div>
-      </div>
-      
-      <div class="form-group">
-        <label for="lastName">Last Name <span class="required-star" style="color: red;">*</span></label>
-        <input type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="user.lastName" required />
-        <div *ngIf="validateLastName && !user.lastName" class="text-danger">Last Name is Required.</div>
-      </div>
-
-      <div class="form-group">
-        <label for="email">Email Address <span class="required-star">*</span></label>
-        <input type="email" class="form-control" id="email" name="email" [(ngModel)]="user.email"  required />
-        <div *ngIf="validateEmail && !user.email" class="text-danger">{{emailErrorMessage}}</div>
-      </div>
+  <h1 style="color: #ffb400;font-weight: bold;">Register</h1>
   
-      <div class="form-group">
-        <label for="password">Password <span class="required-star">*</span></label>
-        <input type="password" class="form-control" id="password" name="password" [(ngModel)]="user.password"  #passwordInput  required minlength="6" />
-        <span class="toggle-password" (click)="togglePasswordVisibility()">
-          <i [ngClass]="isPasswordVisible ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
-        </span>
-        <div *ngIf="validatePasswordmsg && !user.password" class="text-danger">{{passwordErrorMessage}}</div>
-      </div>
-  
-      <div class="form-group">
-        <label for="confirmpassword">Confirm Password <span class="required-star">*</span></label>
-        <input type="password" class="form-control" id="confirmpassword" name="confirmpassword" [(ngModel)]="user.confirmpassword"  #passwordInput  required minlength="6" />
-        <span class="toggle-password" (click)="togglePasswordVisibility()">
-          <i [ngClass]="isPasswordVisible ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
-        </span>
-        <div *ngIf="validateConfirmPasswordmsg && !user.confirmpassword" class="text-danger">{{confirmPasswordErrorMessage}}</div>
-      </div>
+  <div class="form-group">
+      <label for="firstName">First Name <span class="required-star">*</span></label>
+      <input type="text" class="form-control" id="firstName" [(ngModel)]="user.firstName" required />
+      <div *ngIf="validateFirstName && !user.firstName" class="text-danger">First Name is Required.</div>
+  </div>
 
-      <div class="form-group">
-        <label for="phone">Phone Number <span class="required-star" style="color: red;">*</span></label>
-        <input type="text" class="form-control" id="phone" name="phone" [(ngModel)]="user.phoneNum"  required pattern="^[0-9]{10}$" />
-        <div *ngIf="validatePhoneNum && !user.phoneNum" class="text-danger">{{phoneNumErrorMessage}}</div>
-      </div>
-     
-      <button class="submit-button" (click)="onRegister()">Register</button>
+  <div class="form-group">
+      <label for="lastName">Last Name <span class="required-star">*</span></label>
+      <input type="text" class="form-control" id="lastName" [(ngModel)]="user.lastName" required />
+      <div *ngIf="validateLastName && !user.lastName" class="text-danger">Last Name is Required.</div>
+  </div>
 
-      <div class="already-account">
-        <p>Already have an account? 
-            <a routerLink="/login" class="login-link">Login</a>
-        </p>
-      </div>
+  <div class="form-group">
+      <label for="email">Email Address <span class="required-star">*</span></label>
+      <input type="email" class="form-control" id="email" [(ngModel)]="user.email" required />
+      <div *ngIf="validateEmail && !user.email" class="text-danger">{{ emailErrorMessage }}</div>
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password <span class="required-star">*</span></label>
+    <div style="display: flex;">
+        <input [type]="showPassword ? 'text' : 'password'" class="form-control" id="password" [(ngModel)]="user.password" required />
+        <span class="input-group-text" (click)="showPassword = !showPassword" style="cursor: pointer;    height: 51px;margin-top: 4px;margin-left: 5px;box-sizing: border-box;">
+            <i class="fa" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+        </span>
+    </div>
+    <div *ngIf="validatePasswordmsg && !user.password" class="text-danger">{{ passwordErrorMessage }}</div>
 </div>
 
+<div class="form-group">
+    <label for="confirmpassword">Confirm Password <span class="required-star">*</span></label>
+    <div style="display: flex;">
+        <input [type]="showConfirmPassword ? 'text' : 'password'" class="form-control" id="confirmpassword" [(ngModel)]="user.confirmpassword" required />
+        <span class="input-group-text" (click)="showConfirmPassword = !showConfirmPassword" style="cursor: pointer;    height: 51px;margin-top: 4px;margin-left: 5px;box-sizing: border-box;">
+            <i class="fa" [ngClass]="showConfirmPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+        </span>
+    </div>
+    <div *ngIf="validateConfirmPasswordmsg && !user.confirmpassword" class="text-danger">{{ confirmPasswordErrorMessage }}</div>
+</div>
+
+  <div class="form-group">
+      <label for="phone">Phone Number <span class="required-star">*</span></label>
+      <input type="text" class="form-control" id="phone" [(ngModel)]="user.phoneNum" required />
+      <div *ngIf="validatePhoneNum && !user.phoneNum" class="text-danger">{{ phoneNumErrorMessage }}</div>
+  </div>
+
+  <button class="submit-button" (click)="onRegister()">Register</button>
+
+  <div class="already-account">
+      <p>Already have an account? 
+          <a routerLink="/login" class="login-link" style="color: #ffb400; text-decoration: underline;">Login</a>
+      </p>
+  </div>
+</div>

@@ -3,4 +3,5 @@ export class Expenses {
     name?:string
     category?:string
     expenditure?:number
+    Date?:Date
 }

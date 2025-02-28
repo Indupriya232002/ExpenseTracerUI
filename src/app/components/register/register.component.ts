@@ -33,7 +33,8 @@ export class RegisterComponent implements OnInit {
  validatePasswordmsg = false;
  validateConfirmPasswordmsg = false;
  validatePhoneNum = false;
-
+ showPassword: boolean = false;
+ showConfirmPassword: boolean = false;
  errorMessage : string = "";
  emailErrorMessage : string = "";
  passwordErrorMessage : string = "";

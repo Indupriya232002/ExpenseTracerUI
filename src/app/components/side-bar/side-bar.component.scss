@@ -187,6 +187,30 @@ button, a {
   height: 400px;
 }
 
+.date-filter-row {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.date-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.get-expenses-btn {
+  display: flex;
+  align-items: center;
+}
+
+.get-expenses-btn button {
+  height: 38px;
+  margin-top: 23px;
+}
+
+
 .deleteIcon {
   position: absolute;
   top: -0.6em;
@@ -358,15 +382,16 @@ input, select {
 }
 
 button {
-  width: 100%;
+  width: 90%;
   padding: 12px;
-  margin-top: 15px;
+  margin-top: 11px;
   border: 1px solid orange;
   background: transparent;
   color: orange;
   font-size: 16px;
   cursor: pointer;
   border-radius: 5px;
+  margin-left: 23px;
 }
 
 .modal-content {
@@ -374,4 +399,10 @@ button {
   max-width: 100%;
   background: #1e1e1e !important;
   border-radius: 8px;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
 }
