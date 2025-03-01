@@ -7,11 +7,11 @@ import { Observable } from 'rxjs';
 })
 export class ResetService {
 
-  baseUrl = "http://localhost:7187/api/User/";
+  baseUrl = "http://localhost:7111/api/User/";
   constructor(private http:HttpClient) { }
 
-  resetPassword(email: string, newPassword: string): Observable<any> {
-    const payload = { email:email, NewPassword: newPassword };  // Ensure the property names match the backend expectation
+  resetPassword(email: string, newPassword: string,confirmPassword:string): Observable<any> {
+    const payload = { email:email, NewPassword: newPassword ,ConfirmPassword:confirmPassword};  // Ensure the property names match the backend expectation
     return this.http.post(this.baseUrl + 'ResetPassword', payload);
   }
 

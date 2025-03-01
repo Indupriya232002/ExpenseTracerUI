@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { Expenses } from '../models/expenses.model';
@@ -66,9 +66,19 @@ export class ExpensesService {
     return this.http.delete<any>(`${this.baseUrl}DeleteExpenseByUserIdAndExpenseId?userId=${userId}&expenseId=${expenseId}`, { headers });
   }
 
-  getExpensesByDateRange(startDate: string, endDate: string): Observable<any> {
-    return this.http.get(`${this.baseUrl}GetExpensesByDateRange?startDate=${startDate}&endDate=${endDate}`);
-  }
+  // getExpensesByDateRange(startDate: string, endDate: string,token: string): Observable<any> {
+  //   return this.http.get(`${this.baseUrl}GetExpensesByDateRange?startDate=${startDate}&endDate=${endDate}`);
+  // }
+  getExpensesByDateRange(startDate: string, endDate: string, token: string): Observable<any> { 
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    const params = new HttpParams()
+        .set('startDate', startDate)
+        .set('endDate', endDate);
+
+    return this.http.get<any>(`${this.baseUrl}GetExpensesByDateRange`, { headers, params });
+}
+
+  
 
   // Get daily expenses
   getDailyExpenses(): Observable<any> {

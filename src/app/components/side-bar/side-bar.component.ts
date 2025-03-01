@@ -15,12 +15,7 @@ export class SideBarComponent implements OnInit {
   expenseForm!: FormGroup;
   isSubmitted = false;
 
-  expenseData = {
-    expenditure: '',
-    name: '',
-    date: '',
-    category: ''
-  };
+  expenseData :any;
   startDate: string = '';
   isUpdate = false;
   endDate: string = '';
@@ -185,8 +180,8 @@ export class SideBarComponent implements OnInit {
   }
 
 filterExpenses(): void {
-  
-  this.expenseService.getExpensesByDateRange(this.startDate, this.endDate).subscribe(response => {
+  const token = localStorage.getItem('token') || '';
+  this.expenseService.getExpensesByDateRange(this.startDate, this.endDate,token).subscribe(response => {
     let data = JSON.parse(JSON.stringify(response)) || []; // Ensure it's not undefined
     this.expensiveList = data[0].expenses.map(x => {
       return{
@@ -245,10 +240,12 @@ filterExpenses(): void {
         }
       ]
     }
+    this.expensiveList = [];
   });
 }
 
 onClickMonth() {
+  this.expensiveList = [];
   this.switchScreen = 2;
   this.headName = "Monthly Analysis";
   const today = new Date();
@@ -401,11 +398,8 @@ onClickMonth() {
   updateExpensive(data,content){
     this.isUpdate = true;
     this.modalService.open(content, { centered: true, size: 'md' });
-
-    this.expenseData.expenditure = data.expenditure;
-    this.expenseData.name = data.name;
+    this.expenseData = data;
     this.expenseData.date = data.date?.split("T")[0];
-    this.expenseData.category = data.category;
   }
 }
 

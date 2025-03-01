@@ -64,7 +64,7 @@ body {
 }
 
 .nav-items a {
-    color: white;
+    color:  #ffb400;
     text-decoration: none;
     font-size: 16px;
 }
@@ -102,6 +102,7 @@ body {
     color: #ffb400;
     font-weight: bold;
     margin-bottom: 20px;
+    font-size: 32px;
 }
 
 .login-container h2 {
@@ -220,27 +221,20 @@ p a:hover {
 
 .toggle-password {
     position: absolute;
-    /* Set position absolute inside the wrapper */
     right: 65px;
     top: 67%;
     transform: translateY(-50%);
-    /* Fine-tune vertical centering */
     cursor: pointer;
-    /* Add pointer cursor on hover */
     font-size: 18px;
-    /* Adjust the size of the icon */
     color: #333;
-    /* Color of the icon */
 }
 
 .toggle-password i {
     font-size: 1.1em;
-    /* Size of the eye icon */
 }
 
 .password-wrapper+.text-danger {
     margin-top: 8px;
-    /* Space between input and validation message */
 }
 
 .signup-link {
@@ -250,14 +244,6 @@ p a:hover {
 }
 
 
-.register-link {
-    color: #ffb400;
-}
-
-.register-link:hover {
-    text-decoration: underline;
-    color: #ffb400;
-}
 
 
 a {
@@ -291,9 +277,6 @@ a {
     margin-left: 29px;
     /* Error message aligned with the input */
 }
-
-
-
 
 .form-group {
     margin-bottom: 15px;
@@ -361,4 +344,15 @@ a {
     top: 0;
     left: 0;
     background-color: black;
+}
+
+.input-group-text{
+    background: white;
+    box-sizing: border-box;
+    width: 26px;
+    height: 39px;
+    border-radius: 3px;
+    text-align: center;
+    padding: 6px;
+    padding-top: 8px;
 }

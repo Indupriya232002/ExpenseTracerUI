@@ -10,7 +10,7 @@
 
     <!-- Registration Form -->
     <div class="register-container">
-        <h1 style="color: #ffb400;font-weight: bold;">Register</h1>
+        <h1 style="color: #ffb400;font-weight: bold;font-size:32px">Register</h1>
 
         <div class="form-group">
             <label for="firstName">First Name <span class="required-star">*</span></label>
@@ -36,7 +36,7 @@
                 <input [type]="showPassword ? 'text' : 'password'" class="form-control" id="password"
                     [(ngModel)]="user.password" required />
                 <span class="input-group-text" (click)="showPassword = !showPassword"
-                    style="cursor: pointer;    height: 51px;margin-top: 4px;margin-left: 5px;box-sizing: border-box;">
+                    style="cursor: pointer;    height: 51px;margin-top: 4px;margin-left: 5px;box-sizing: border-box; background: white;padding: 10px;">
                     <i class="fa" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
                 </span>
             </div>
@@ -49,7 +49,7 @@
                 <input [type]="showConfirmPassword ? 'text' : 'password'" class="form-control" id="confirmpassword"
                     [(ngModel)]="user.confirmpassword" required />
                 <span class="input-group-text" (click)="showConfirmPassword = !showConfirmPassword"
-                    style="cursor: pointer;    height: 51px;margin-top: 4px;margin-left: 5px;box-sizing: border-box;">
+                    style="cursor: pointer;    height: 51px;margin-top: 4px;margin-left: 5px;box-sizing: border-box; background: white;padding: 10px;">
                     <i class="fa" [ngClass]="showConfirmPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
                 </span>
             </div>
