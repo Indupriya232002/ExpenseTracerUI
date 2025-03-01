@@ -1,27 +1,31 @@
 <!-- Navbar -->
-<div class="navbar">
-    <div class="logo">Expense Tracker</div>
-    <ul class="nav-items">
-        <!-- <li><a routerLink="/login">Login</a></li>
+<div class="background">
+    <div id="particles-js"></div>
+    <div class="background">
+        <div id="particles-js"></div>
+        <div class="navbar">
+            <div class="logo">Expense Tracker</div>
+            <ul class="nav-items">
+                <!-- <li><a routerLink="/login">Login</a></li>
         <li><a routerLink="/register">Register</a></li> -->
-        <li><a routerLink="/welcome">Home</a></li>
-    </ul>
-</div>
-
-    <!-- Forgot Password Card -->
-    <div class="contact-container">
-        <div class="contact-card">
-            <h2>OTP Verification</h2>
-            <input type="text" maxlength="1" [(ngModel)]="otp[0]" (input)="onOtpInput(0, $event)" class="otp-input">
-            <input type="text" maxlength="1" [(ngModel)]="otp[1]" (input)="onOtpInput(1, $event)" class="otp-input">
-            <input type="text" maxlength="1" [(ngModel)]="otp[2]" (input)="onOtpInput(2, $event)" class="otp-input">
-            <input type="text" maxlength="1" [(ngModel)]="otp[3]" (input)="onOtpInput(3, $event)" class="otp-input">
-            <input type="text" maxlength="1" [(ngModel)]="otp[4]" (input)="onOtpInput(4, $event)" class="otp-input">
-            <input type="text" maxlength="1" [(ngModel)]="otp[5]" (input)="onOtpInput(5, $event)" class="otp-input">    
-            <button (click)="verifyOtp()">Verify OTP</button>
-            <p class="back-to-login">
-                <a routerLink="/forgotpassword">Back to Enter Email  Again..!!!</a>
-            </p>
+                <li><a routerLink="/welcome">Home</a></li>
+            </ul>
+        </div>
+        <!-- Forgot Password Card -->
+        <div class="contact-container">
+            <div class="contact-card">
+                <h2>OTP Verification</h2>
+                <input type="text" maxlength="1" [(ngModel)]="otp[0]" (input)="onOtpInput(0, $event)" class="otp-input">
+                <input type="text" maxlength="1" [(ngModel)]="otp[1]" (input)="onOtpInput(1, $event)" class="otp-input">
+                <input type="text" maxlength="1" [(ngModel)]="otp[2]" (input)="onOtpInput(2, $event)" class="otp-input">
+                <input type="text" maxlength="1" [(ngModel)]="otp[3]" (input)="onOtpInput(3, $event)" class="otp-input">
+                <input type="text" maxlength="1" [(ngModel)]="otp[4]" (input)="onOtpInput(4, $event)" class="otp-input">
+                <input type="text" maxlength="1" [(ngModel)]="otp[5]" (input)="onOtpInput(5, $event)" class="otp-input">
+                <button (click)="verifyOtp()">Verify OTP</button>
+                <p class="back-to-login">
+                    <a routerLink="/forgotpassword">Back to Enter Email Again..!!!</a>
+                </p>
+            </div>
         </div>
     </div>
-
+</div>

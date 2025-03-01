@@ -1,14 +1,20 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
 import Swal from 'sweetalert2';
-
+declare var Stats: any;
+declare let particlesJS: any;
+declare global {
+  interface Window {
+    pJSDom: any[];
+  }
+}
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent  implements OnInit {
   @ViewChild('passwordInput', { static: false }) passwordInput!: ElementRef;
 
 
@@ -24,8 +30,11 @@ export class LoginComponent {
   isPasswordVisible = false;
   showPassword: boolean = false;
   showConfirmPassword: boolean = false;
-  constructor(private userservice: UsersService, private router: Router) {}
+  constructor(private userservice: UsersService, private router: Router,private renderer: Renderer2) {}
 
+  ngOnInit(): void {
+    this.loadParticles();
+  }
   togglePasswordVisibility(): void {
     this.isPasswordVisible = !this.isPasswordVisible;
   }
@@ -107,5 +116,55 @@ export class LoginComponent {
     this.user.password = '';
     this.validateEmail = false;
     this.validatePasswordmsg = false;
+  }
+
+  
+  loadParticles(): void {
+    // Load particles.js dynamically
+    this.loadScript('assets/particlesjs/particles.js', () => {
+      particlesJS.load('particles-js', 'assets/particlesjs/particles.json', function () {
+        console.log('Particles.js loaded successfully!');
+      });
+    });
+
+    // Load app.js
+    this.loadScript('assets/particlesjs/app.js', () => {
+      console.log('app.js loaded');
+    });
+
+    // Load stats.js
+    // this.loadScript('assets/particlesjs/stats.js', () => {
+    //   this.initStats();
+    // });
+  }
+
+  loadScript(src: string, callback: () => void) {
+    const script = this.renderer.createElement('script');
+    script.src = src;
+    script.onload = callback;
+    script.onerror = () => console.error(`Failed to load script: ${src}`);
+    document.body.appendChild(script);
+  }
+
+  initStats(): void {
+    let stats = new Stats();
+    stats.setMode(0);
+    stats.domElement.style.position = 'absolute';
+    stats.domElement.style.left = '0px';
+    stats.domElement.style.top = '0px';
+    document.body.appendChild(stats.domElement);
+
+    const count_particles = document.querySelector('.js-count-particles') as HTMLElement;
+
+    function update() {
+      stats.begin();
+      stats.end();
+      if (window.pJSDom && window.pJSDom[0]?.pJS?.particles?.array) {
+        count_particles.innerText = window.pJSDom[0].pJS.particles.array.length.toString();
+      }
+      requestAnimationFrame(update);
+    }
+
+    requestAnimationFrame(update);
   }
 }

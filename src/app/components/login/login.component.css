@@ -1,9 +1,13 @@
 /* Full Page Styling */
-html, body {
+@import url('../../../assets//particlesjs/style.css');
+
+html,
+body {
     margin: 0;
     padding: 0;
     height: 100%;
-    background: #f4f4f4; /* Light gray background */
+    background: #f4f4f4;
+    /* Light gray background */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,7 +36,8 @@ html, body {
     justify-content: space-between;
     align-items: center;
     padding: 10px 50px;
-    background: rgba(0, 0, 0, 0.4); /* Semi-transparent background */
+    background: rgba(0, 0, 0, 0.4);
+    /* Semi-transparent background */
     color: white;
     position: fixed;
     top: 0;
@@ -82,19 +87,23 @@ html, body {
     left: 50%;
     transform: translate(-50%, -50%);
     height: auto;
-    user-select: none; /* Prevents text selection */
-    pointer-events: auto; /* Ensures normal interaction */
+    user-select: none;
+    /* Prevents text selection */
+    pointer-events: auto;
+    /* Ensures normal interaction */
     touch-action: none;
     margin: auto;
     padding: 30px;
     text-align: left;
 }
+
 .login-title {
     text-align: center;
     color: #ffb400;
     font-weight: bold;
     margin-bottom: 20px;
 }
+
 .login-container h2 {
     margin-bottom: 20px;
     color: #ffb400;
@@ -102,14 +111,16 @@ html, body {
 
 /* Input Fields */
 input {
-    width: 95%; /* Prevent stretching */
+    width: 95%;
+    /* Prevent stretching */
     padding: 10px;
     margin: 10px 0;
     border: 1px solid gray;
     border-radius: 5px;
     font-size: 16px;
     margin-bottom: 15px;
-    box-sizing: border-box; /* Ensures padding doesn't increase width */
+    box-sizing: border-box;
+    /* Ensures padding doesn't increase width */
 }
 
 .input-group label {
@@ -188,38 +199,51 @@ p a:hover {
     text-align: center;
     font-size: 16px;
     display: block;
-  }
-  
-  .password-wrapper {
+}
+
+.password-wrapper {
     position: relative;
-    width: 100%; /* Ensures wrapper takes full width */
-  }
-  
-  .password-wrapper input {
-    width: 100%; /* Input takes full width */
-    padding-right: 40px; /* Make space for the eye icon */
-    box-sizing: border-box; /* Ensures padding is included in the width */
-    height: 40px; /* Adjust height for input field */
-  }
-  
-  .toggle-password {
-    position: absolute; /* Set position absolute inside the wrapper */
+    width: 100%;
+    /* Ensures wrapper takes full width */
+}
+
+.password-wrapper input {
+    width: 100%;
+    /* Input takes full width */
+    padding-right: 40px;
+    /* Make space for the eye icon */
+    box-sizing: border-box;
+    /* Ensures padding is included in the width */
+    height: 40px;
+    /* Adjust height for input field */
+}
+
+.toggle-password {
+    position: absolute;
+    /* Set position absolute inside the wrapper */
     right: 65px;
     top: 67%;
-    transform: translateY(-50%); /* Fine-tune vertical centering */
-    cursor: pointer; /* Add pointer cursor on hover */
-    font-size: 18px; /* Adjust the size of the icon */
-    color: #333; /* Color of the icon */
-  }
-  
-  .toggle-password i {
-    font-size: 1.1em; /* Size of the eye icon */
-  }
-  
-  .password-wrapper + .text-danger {
-    margin-top: 8px; /* Space between input and validation message */
-  }
-  .signup-link {
+    transform: translateY(-50%);
+    /* Fine-tune vertical centering */
+    cursor: pointer;
+    /* Add pointer cursor on hover */
+    font-size: 18px;
+    /* Adjust the size of the icon */
+    color: #333;
+    /* Color of the icon */
+}
+
+.toggle-password i {
+    font-size: 1.1em;
+    /* Size of the eye icon */
+}
+
+.password-wrapper+.text-danger {
+    margin-top: 8px;
+    /* Space between input and validation message */
+}
+
+.signup-link {
     margin-top: 10px;
     font-size: 14px;
     text-align: center;
@@ -244,15 +268,15 @@ a {
 .required {
     color: red;
     font-weight: bold;
-  }
+}
 
-  .no-account {
+.no-account {
     text-align: left;
     margin-top: 20px;
 }
 
-.no-account p{
-  margin-top: -12px;
+.no-account p {
+    margin-top: -12px;
 }
 
 .text-danger {
@@ -260,11 +284,13 @@ a {
     font-size: 14px;
     margin-top: 5px;
     text-align: left;
-  }
-  
-  .email-error, .password-error {
-    margin-left: 29px; /* Error message aligned with the input */
-  }
+}
+
+.email-error,
+.password-error {
+    margin-left: 29px;
+    /* Error message aligned with the input */
+}
 
 
 
@@ -302,7 +328,8 @@ a {
 .btn-login {
     width: 99%;
     padding: 10px;
-    background: #ffb400;;
+    background: #ffb400;
+    ;
     border: none;
     color: white;
     font-size: 16px;
@@ -325,4 +352,13 @@ a {
     right: 10px;
     top: 35px;
     cursor: pointer;
+}
+
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: black;
 }
