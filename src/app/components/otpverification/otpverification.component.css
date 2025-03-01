@@ -1,4 +1,3 @@
-/* Full Page Styling */
 html, body {
     margin: 0;
     padding: 0;
@@ -9,7 +8,6 @@ html, body {
     align-items: center;
 }
 
-/* Navbar */
 .navbar {
     width: 100%;
     height: 55px;
@@ -25,13 +23,12 @@ html, body {
     z-index: 1000;
 }
 
-/* Navbar Logo */
 .logo {
     font-size: 22px;
     font-weight: bold;
+    color: #ffb400;
 }
 
-/* Navbar Items */
 .nav-items {
     list-style: none;
     display: flex;
@@ -43,12 +40,13 @@ html, body {
 }
 
 .nav-items a {
-    color: white;
+    color:#ffb400;
     text-decoration: none;
     font-size: 16px;
 }
 
 .nav-items a:hover {
+    color:#ffb400;
     text-decoration: underline;
 }
 
@@ -61,9 +59,9 @@ html, body {
 }
 
 .contact-card {
-    background-color: white;
+    background: #1c1f2a;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
     padding: 40px;
     width: 60%;
     max-width: 515px;
@@ -74,11 +72,11 @@ html, body {
 .contact-card h2 {
     margin-top: 0;
     margin-bottom: 20px;
-    color: #333;
+    color: #ffb400;
 }
 
 .contact-card p {
-    color: #666;
+    color: white;
     font-size: 14px;
     margin-bottom: 25px;
 }
@@ -90,23 +88,28 @@ html, body {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
+    background: white;
+    box-sizing: border-box; 
+    color: black;
 }
 
 .contact-card button {
     width: 50%;
     padding: 12px;
-    background-color: #28a745;
-    color: white;
+    background: #ffb400;
+    color: black;
     border: none;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s;
     margin-top: 28px;
+    font-weight: bold;
 }
 
 .contact-card button:hover {
-    background-color: #218838;
+    background: white;
+    color: black;
 }
 
 .otp-input {
@@ -127,6 +130,8 @@ html, body {
     text-align: center;
     font-size: 18px;
     margin: 0 5px;
+    color: black;
+    background: white;
   }
 
 .back-to-login {
@@ -135,10 +140,11 @@ html, body {
 }
 
 .back-to-login a {
-    color: #007bff;
+    color:#ffb400;
     text-decoration: none;
 }
 
 .back-to-login a:hover {
+    color:white;
     text-decoration: underline;
 }

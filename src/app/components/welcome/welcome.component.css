@@ -1,4 +1,6 @@
 /* General Reset */
+@import url('../../../assets//particlesjs/style.css');
+
 html, body {
     margin: 0;
     padding: 0;
@@ -11,15 +13,15 @@ html, body {
 
 /* Background Styling */
 .background {
+    position: relative;
     width: 100%;
     height: 100vh;
+    overflow: hidden; /* Ensures content does not overflow */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    position: relative;
-}
+  }
 
 /* Navbar */
 .navbar {
@@ -71,13 +73,11 @@ html, body {
 
 /* Main Content */
 .content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     text-align: center;
-    width: 80%;
-}
+    position: relative;
+    z-index: 2; /* Keep content above particles */
+    color: white; /* Ensure text is visible */
+  }
 
 .content h1 {
     font-size: 40px;
@@ -89,21 +89,54 @@ html, body {
     color: #ffb300;
     text-decoration: underline;
 }
-
+#particles-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+  
+  .content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: white;
+  }
+  
 /* Button */
 .get-started {
-    background: #ffb300;
-    color: black;
-    padding: 12px 25px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-    border-radius: 5px;
+    display: inline-block;
     margin-top: 20px;
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: black;
+    background: #FFD700;
+    border-radius: 50px;
+    box-shadow: 0 0 10px #FFD700, 0 0 40px #FFD700;
+    transition: 0.3s ease-in-out;
+    animation: glow 1.5s infinite alternate;
 }
 
 .get-started:hover {
-    background: white;
-    color: black;
+    transform: scale(1.1);
+    box-shadow: 0 0 20px #FFD700, 0 0 60px #FFD700;
 }
+
+@keyframes glow {
+    0% { box-shadow: 0 0 10px #FFD700, 0 0 40px #FFD700; }
+    100% { box-shadow: 0 0 20px #FFD700, 0 0 80px #FFD700; }
+}
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: black; /* Optional: Set a background color */
+  }
+  
