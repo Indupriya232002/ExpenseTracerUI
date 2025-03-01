@@ -29,3 +29,12 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 >>>>>>> ac39cdf (first commit)
+UI SCREENS
+![image](https://github.com/user-attachments/assets/bef860b7-65de-448b-b8aa-0ae3d2a14f45)
+![image](https://github.com/user-attachments/assets/b0c7f17b-cfe2-4dca-9fe6-b12c3bf02dd4)
+![image](https://github.com/user-attachments/assets/b620ce7d-4acb-48e6-886b-2ce7d5f9e38c)
+![image](https://github.com/user-attachments/assets/af3760bb-0060-484b-8afc-eaba1f5e2e2b)
+![image](https://github.com/user-attachments/assets/71fe40e9-3f7c-4f49-b25c-74439de6c5e3)
+
+
+
