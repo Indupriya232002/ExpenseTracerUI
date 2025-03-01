@@ -9,16 +9,17 @@ import { OtpverificationComponent } from './components/otpverification/otpverifi
 import { ResetpasswordComponent } from './components/resetpassword/resetpassword.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { AuthGuard } from './auth.guard'
-
+import { ContactComponent } from './components/contact/contact.component';
 const routes: Routes = [
-  { path: '', redirectTo: 'welcome', pathMatch: 'full' }, // Redirect to Welcome page
-  { path: 'welcome', component: WelcomeComponent }, // Welcome route
+  { path: '', redirectTo: 'welcome', pathMatch: 'full' },
+  { path: 'welcome', component: WelcomeComponent },
   {path:'login',component:LoginComponent},
   {path:'signup',component:RegisterComponent},
   {path:'expenses',component:ExpensesComponent},
   {path:'forgotpassword',component:ForgotpasswordComponent},
   {path:'otpverification',component:OtpverificationComponent},
   {path:'resetpassword',component:ResetpasswordComponent},
+  {path:'contact',component:ContactComponent},
   {path:'sidebar',component:SideBarComponent,canActivate: [AuthGuard] }
 ];
 

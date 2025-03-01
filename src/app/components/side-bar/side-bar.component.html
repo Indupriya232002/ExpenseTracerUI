@@ -65,15 +65,29 @@
                     <h2 style="width: 100%;margin: 0;">Expense List</h2>
                 </div>
                 <div class="row" *ngFor="let item of expensiveList">
-                    <div class="card move-up-on-hover" style="width: 97%;border: solid;border-color: #ff8c00;">
-                        <span class="deleteIcon" (click)="deleteExpense(item.expenseId)"><i aria-hidden="true" class="fa fa-times"></i></span>
+                    <div class="card move-up-on-hover" style="width: 97%;border: solid;border-color: #ff8c00;padding: 0;">
+                        <span class="deleteIcon" (click)="deleteExpense(item.expenseId)"><i aria-hidden="true"
+                                class="fa fa-times"></i></span>
                         <div class="row">
-                            <div class="col-8">
-                                <h5>{{ item.name }}</h5>
-                                <p>Amount: {{ item.expenditure }}</p>
-                                <p>Date: {{ item.date }}</p>
+                            <div class="col-2" style="display: flex;align-items: center;justify-content: center;">
+                                <img style="width: 70%;" src="../../../assets/imgs/moneyIcon.png" alt="Image Not Found">
                             </div>
-                            <div class="col-4" style="display: flex;align-items: center;justify-content: flex-end;">
+                            <div class="col-2" style="padding: 15px;">
+                                <div class="row">
+                                    <h3 style="color:#ff8c00;font-size: 30px;font-family: fantasy;text-transform: uppercase;">{{ item.name }}</h3>
+                                </div>
+                                <div class="row">
+                                    {{item.date}}
+                                </div>
+                            </div>
+                            <div class="col-1" style="display: flex;align-items: center;">
+                                <div class="circle"></div>
+                                <div class="dollar">$</div>
+                            </div>
+                            <div class="col-2" style="display: flex;align-items: center;" >
+                                <h1 class="text-glow" style="margin: 0;">{{item.expenditure}}</h1>
+                            </div>
+                            <div class="col-3" style="display: flex;align-items: center;justify-content: flex-end;">
                                 <ul class="user-list">
                                     <li>
                                         <div class="user-icon primary">
@@ -84,6 +98,12 @@
                                         </div>
                                     </li>
                                 </ul>
+                            </div>
+                            <div class="col-2" style="font-size: 2.5em; text-align: center; display: flex; align-items: center; cursor: pointer;">
+                                <span class="updateIcon" (click)="updateExpensive(item, content)" ngbTooltip="Edit item"
+                                    placement="top">
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -97,18 +117,19 @@
                         <label>Start Date:</label>
                         <input type="date" [(ngModel)]="startDate" class="form-control" />
                     </div>
-        
+
                     <div class="date-field">
                         <label>End Date:</label>
                         <input type="date" [(ngModel)]="endDate" class="form-control" />
                     </div>
-        
+
                     <div class="get-expenses-btn">
-                        <button class="btn btn-primary" style="padding: 7px;" (click)="filterExpenses()">Get Expenses</button>
+                        <button class="btn btn-primary" style="padding: 7px;" (click)="filterExpenses()">Get
+                            Expenses</button>
                     </div>
                 </div>
             </div>
-        
+
             <!-- Chart Section -->
             <div class="col-md-6">
                 <div class="row" style="text-align: center;">
@@ -118,42 +139,59 @@
                     <div echarts [options]="chartForMonthly" class="chart-container"></div>
                 </div>
             </div>
-        
+
             <!-- Expense List -->
-            <div class="col-md-6" style="display: flex; flex-direction: column; gap: 1em;">
+          <div class="col-md-6" style="display: flex;flex-direction: column;gap: 1em;">
                 <div class="row" style="text-align: center;">
-                    <h2 style="width: 100%; margin: 0;">Expense List</h2>
+                    <h2 style="width: 100%;margin: 0;">Expense List</h2>
                 </div>
-        
                 <div class="row" *ngFor="let item of expensiveList">
-                    <div class="card move-up-on-hover" style="width: 97%; border: solid; border-color: #ff8c00;">
-                        <span class="deleteIcon" (click)="deleteExpense(item.expenseId)">
-                            <i aria-hidden="true" class="fa fa-times"></i>
-                        </span>
+                    <div class="card move-up-on-hover" style="width: 97%;border: solid;border-color: #ff8c00;padding: 0;">
+                        <span class="deleteIcon" (click)="deleteExpense(item.expenseId)"><i aria-hidden="true"
+                                class="fa fa-times"></i></span>
                         <div class="row">
-                            <div class="col-8">
-                                <h5>{{ item.name }}</h5>
-                                <p>Amount: {{ item.expenditure || 'N/A' }}</p>
-                                <p>Date: {{ item.date || 'N/A' }}</p>                                
+                            <div class="col-2" style="display: flex;align-items: center;justify-content: center;">
+                                <img style="width: 70%;" src="../../../assets/imgs/moneyIcon.png" alt="Image Not Found">
                             </div>
-                            <div class="col-4" style="display: flex; align-items: center; justify-content: flex-end;">
+                            <div class="col-2" style="padding: 15px;">
+                                <div class="row">
+                                    <h3 style="color:#ff8c00;font-size: 30px;font-family: fantasy;text-transform: uppercase;">{{ item.name }}</h3>
+                                </div>
+                                <div class="row">
+                                    {{item.date}}
+                                </div>
+                            </div>
+                            <div class="col-1" style="display: flex;align-items: center;">
+                                <div class="circle"></div>
+                                <div class="dollar">$</div>
+                            </div>
+                            <div class="col-2" style="display: flex;align-items: center;" >
+                                <h1 class="text-glow" style="margin: 0;">{{item.expenditure}}</h1>
+                            </div>
+                            <div class="col-3" style="display: flex;align-items: center;justify-content: flex-end;">
                                 <ul class="user-list">
                                     <li>
                                         <div class="user-icon primary">
                                             <div class="user-box">
                                                 <i class="fa fa-money return-image" aria-hidden="true"
-                                                    style="font-size: 2em; color: rgb(115 102 255);"></i>
+                                                    style="font-size: 2em;color:rgb(115 102 255);"></i>
                                             </div>
                                         </div>
                                     </li>
                                 </ul>
+                            </div>
+                            <div class="col-2" style="font-size: 2.5em; text-align: center; display: flex; align-items: center; cursor: pointer;">
+                                <span class="updateIcon" (click)="updateExpensive(item, content)" ngbTooltip="Edit item"
+                                    placement="top">
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                </span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
+
         <div class="row" *ngIf="switchScreen == 3">
             <div class="col-md-6">
                 <div class="row" style="text-align: center;">
@@ -168,15 +206,29 @@
                     <h2 style="width: 100%;margin: 0;">Expense List</h2>
                 </div>
                 <div class="row" *ngFor="let item of expensiveList">
-                    <div class="card move-up-on-hover" style="width: 97%;border: solid;border-color: #ff8c00;">
-                        <span class="deleteIcon" (click)="deleteExpense(item.expenseId)"><i aria-hidden="true" class="fa fa-times"></i></span>
+                    <div class="card move-up-on-hover" style="width: 97%;border: solid;border-color: #ff8c00;padding: 0;">
+                        <span class="deleteIcon" (click)="deleteExpense(item.expenseId)"><i aria-hidden="true"
+                                class="fa fa-times"></i></span>
                         <div class="row">
-                            <div class="col-8">
-                                <h5>{{ item.name }}</h5>
-                                <p>Amount: {{ item.expenditure }}</p>
-                                <p>Date: {{ item.date }}</p>
+                            <div class="col-2" style="display: flex;align-items: center;justify-content: center;">
+                                <img style="width: 70%;" src="../../../assets/imgs/moneyIcon.png" alt="Image Not Found">
                             </div>
-                            <div class="col-4" style="display: flex;align-items: center;justify-content: flex-end;">
+                            <div class="col-2" style="padding: 15px;">
+                                <div class="row">
+                                    <h3 style="color:#ff8c00;font-size: 30px;font-family: fantasy;text-transform: uppercase;">{{ item.name }}</h3>
+                                </div>
+                                <div class="row">
+                                    {{item.date}}
+                                </div>
+                            </div>
+                            <div class="col-1" style="display: flex;align-items: center;">
+                                <div class="circle"></div>
+                                <div class="dollar">$</div>
+                            </div>
+                            <div class="col-2" style="display: flex;align-items: center;" >
+                                <h1 class="text-glow" style="margin: 0;">{{item.expenditure}}</h1>
+                            </div>
+                            <div class="col-3" style="display: flex;align-items: center;justify-content: flex-end;">
                                 <ul class="user-list">
                                     <li>
                                         <div class="user-icon primary">
@@ -188,6 +240,12 @@
                                     </li>
                                 </ul>
                             </div>
+                            <div class="col-2" style="font-size: 2.5em; text-align: center; display: flex; align-items: center; cursor: pointer;">
+                                <span class="updateIcon" (click)="updateExpensive(item, content)" ngbTooltip="Edit item"
+                                    placement="top">
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -197,62 +255,67 @@
 
     <div *ngIf="expensiveList.length <= 0">
         <app-loader></app-loader>
-        <h1 class="headerTag" style="text-align: center;">No Data Found <br> Please Add Expenses</h1>
+        <span class="welcome-title">
+            <h1 class="headerTag" style="text-align: center;">No Data Found <br> Please Add Expenses</h1>
+        </span>
     </div>
 </div>
 
 <ng-template #content let-modal>
     <div class="card">
-      <form #expenseForm="ngForm" (ngSubmit)="onSubmit()">
-        <div class="card-header">
-          <div class="row">
-            <div class="col-10"><h1>Add Expense</h1></div>
-            <div class="col-2">
-              <button type="button" class="close" (click)="modal.dismiss('Cross click')">&times;</button>
+        <form #expenseForm="ngForm" (ngSubmit)="onSubmit()">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-10" *ngIf="isUpdate">
+                        <h1>Update Expense</h1>
+                    </div>
+                    <div class="col-10" *ngIf="!isUpdate">
+                        <h1>Add Expense</h1>
+                    </div>
+                    <div class="col-2">
+                        <button type="button" class="close" (click)="modal.dismiss('Cross click')">&times;</button>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-  
-        <div class="card-body">
-          <div class="input-group">
-            <label>Expenditure ₹</label>
-            <input type="text" [(ngModel)]="expenseData.expenditure" placeholder="0" name="expenditure" required #expenditure="ngModel" />
-            <div class="error-message" *ngIf="isSubmitted && expenditure.invalid">Expenditure is required</div>
-          </div>
-  
-          <div class="input-group">
-            <input type="text" [(ngModel)]="expenseData.name" placeholder="What was this expense for?" name="name" required #name="ngModel" />
-            <div class="error-message" *ngIf="isSubmitted && name.invalid">Name is required</div>
-          </div>
-  
-          <div class="input-group">
-            <input type="date" [(ngModel)]="expenseData.date" name="date" required #date="ngModel" />
-            <div class="error-message" *ngIf="isSubmitted && date.invalid">Date is required</div>
-          </div>
-  
-          <div class="input-group">
-            <select [(ngModel)]="expenseData.category" name="category" required #category="ngModel">
-              <option value="">Select a category</option>
-              <option value="General">General</option>
-              <option value="Food">Food</option>
-              <option value="Transport">Transport</option>
-              <option value="Shopping">Shopping</option>
-              <option value="Grocery">Grocery</option>
-              <option value="Fuel">Fuel</option>
-              <option value="Fun">Fun</option>
-            </select>
-            <div class="error-message" *ngIf="isSubmitted && category.invalid">Category is required</div>
-          </div>
-        </div>
-  
-        <div class="card-footer">
-          <button type="submit">Save Expense</button>
-        </div>
-      </form>
+
+            <div class="card-body">
+                <div class="input-group">
+                    <label>Expenditure ₹</label>
+                    <input type="text" [(ngModel)]="expenseData.expenditure" placeholder="0" name="expenditure" required
+                        #expenditure="ngModel" />
+                    <div class="error-message" *ngIf="isSubmitted && expenditure.invalid">Expenditure is required</div>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" [(ngModel)]="expenseData.name" placeholder="What was this expense for?"
+                        name="name" required #name="ngModel" />
+                    <div class="error-message" *ngIf="isSubmitted && name.invalid">Name is required</div>
+                </div>
+
+                <div class="input-group">
+                    <input type="date" [(ngModel)]="expenseData.date" name="date" required #date="ngModel" />
+                    <div class="error-message" *ngIf="isSubmitted && date.invalid">Date is required</div>
+                </div>
+
+                <div class="input-group">
+                    <select [(ngModel)]="expenseData.category" name="category" required #category="ngModel">
+                        <option value="">Select a category</option>
+                        <option value="General">General</option>
+                        <option value="Food">Food</option>
+                        <option value="Transport">Transport</option>
+                        <option value="Shopping">Shopping</option>
+                        <option value="Grocery">Grocery</option>
+                        <option value="Fuel">Fuel</option>
+                        <option value="Fun">Fun</option>
+                    </select>
+                    <div class="error-message" *ngIf="isSubmitted && category.invalid">Category is required</div>
+                </div>
+            </div>
+
+            <div class="card-footer">
+                <button type="submit" *ngIf="isUpdate">Update Expense</button>
+                <button type="submit" *ngIf="!isUpdate">Save Expense</button>
+            </div>
+        </form>
     </div>
-  </ng-template>
-  
-  
-
-
-
+</ng-template>

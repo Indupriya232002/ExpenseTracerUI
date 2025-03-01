@@ -317,6 +317,10 @@ button, a {
   animation: zoom-shake 1.5s ease infinite;
 }
 
+.move-up-on-hover:hover .dollar {
+  animation: zoom-shake 1.5s ease infinite;
+}
+
 .modal-container {
   background: #1e1e1e;
   color: white;
@@ -405,4 +409,66 @@ button {
   color: red;
   font-size: 12px;
   margin-top: 5px;
+}
+
+.welcome-title {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #ffeb3b; /* Yellow */
+  margin-bottom: 20px;
+  animation: glow 2s infinite alternate;
+}
+
+.welcome-title h1 {
+  color: #fff;
+}
+
+
+/* Keyframes for Animations */
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 5px #ffeb3b, 0 0 10px #ffeb3b, 0 0 20px #ffeb3b;
+  }
+  100% {
+    text-shadow: 0 0 10px #ffeb3b, 0 0 20px #ffeb3b, 0 0 30px #ffeb3b;
+  }
+}
+
+.text-glow {
+  font-size: 20px;
+  color: #fff;
+  text-shadow: 0 0 10px #96991b, 0 0 20px #96991b, 0 0 30px #96991b, 0 0 40px #96991b;
+  font-weight: bold;
+}
+
+
+.circle {
+  width: 40px;
+  height: 40px;
+  background-color: #1e2329;
+  border-radius: 50%;
+  display: flex;
+  border: solid;
+  border-color: white;
+  border-width: 1px;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+}
+
+.dollar {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffeb3b;
+  padding-left: 13.7px;
+  position: absolute;
+}
+
+@keyframes bounce {
+  0%, 100% {
+      transform: translateY(5px);
+  }
+  50% {
+      transform: translateY(-5px);
+  }
 }

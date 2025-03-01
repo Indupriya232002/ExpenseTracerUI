@@ -17,6 +17,8 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoaderComponent } from './loader/loader.component';
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { ContactComponent } from './components/contact/contact.component';
 
 
 @NgModule({
@@ -30,11 +32,13 @@ import { LoaderComponent } from './loader/loader.component';
     OtpverificationComponent,
     ExpensesComponent,
     SideBarComponent,
-    LoaderComponent
+    LoaderComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NgbTooltipModule,
     FormsModule,
     NgxEchartsModule.forRoot({ echarts: () => import('echarts') }),
     ReactiveFormsModule,HttpClientModule,

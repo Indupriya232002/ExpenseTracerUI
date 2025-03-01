@@ -22,6 +22,7 @@ export class SideBarComponent implements OnInit {
     category: ''
   };
   startDate: string = '';
+  isUpdate = false;
   endDate: string = '';
   expensiveList = [];
   listForMonth = [];
@@ -103,26 +104,30 @@ export class SideBarComponent implements OnInit {
     }
   }
 
-  getDailyExpenses(){
+  getDailyExpenses() {
     const token = localStorage.getItem('token');
-  if (token) {
-    this.expenseService.getDailyExpenses().subscribe((res) => {
-      this.expensiveList = res.expenses;
-      this.prepareHomePage();
-      this.barGraph();
-    },(error) => {
-      console.error('Error fetching tasks', error);
-      // Optionally handle navigation if not authorized
-      if (error.status === 401) {
-        this.router.navigate(['/login']); // Redirect to login if token is invalid
-      }
-    });
-  } 
-  else {
-    console.error('No userId or token found in local storage');
-    this.router.navigate(['/login']); // Redirect to login if no userId or token
-  }
-    
+    if (token) {
+      this.expenseService.getDailyExpenses().subscribe((res) => {
+        this.expensiveList = res.expenses.map(x => {
+          return{
+            ...x,
+            date : x.date.split("T")[0],
+          }
+        });
+        this.prepareHomePage();
+        this.barGraph();
+      }, (error) => {
+        console.error('Error fetching tasks', error);
+        // Optionally handle navigation if not authorized
+        if (error.status === 401) {
+          this.router.navigate(['/login']); // Redirect to login if token is invalid
+        }
+      });
+    }
+    else {
+      console.error('No userId or token found in local storage');
+      this.router.navigate(['/login']); // Redirect to login if no userId or token
+    }
   }
 
   onClickDaily() {
@@ -183,7 +188,12 @@ filterExpenses(): void {
   
   this.expenseService.getExpensesByDateRange(this.startDate, this.endDate).subscribe(response => {
     let data = JSON.parse(JSON.stringify(response)) || []; // Ensure it's not undefined
-    this.expensiveList = data[0].expenses;
+    this.expensiveList = data[0].expenses.map(x => {
+      return{
+        ...x,
+        date : x.date.split("T")[0],
+      }
+    });
     var graphList = this.expensiveList.map(x => {
       return {
         value: x.expenditure,
@@ -257,7 +267,12 @@ onClickMonth() {
   const token = localStorage.getItem('token');
   if (token) {
     this.expenseService.getUserExpenses(token).subscribe((res) => {
-      this.expensiveList = res;
+      this.expensiveList = res.map(x => {
+        return{
+          ...x,
+          date : x.date.split("T")[0],
+        }
+      });
       this.prepareHomePage();
     },(error) => {
       console.error('Error fetching tasks', error);
@@ -275,6 +290,7 @@ onClickMonth() {
   }
 
   addExpensive(content:any) {
+    this.isUpdate = false;
     this.modalService.open(this.content, { centered: true, size: 'md' });
     this.isSubmitted = false; // Reset validation on modal open
     this.expenseData = { name: '', category: '', expenditure: null, date: '' };
@@ -311,6 +327,7 @@ onClickMonth() {
   
             // Refresh expense list
             this.getExpenses();
+            this.switchScreen =1;
           },
           error: (error) => {
             console.error('Error deleting expense:', error);
@@ -337,26 +354,58 @@ onClickMonth() {
 
   onSubmit() {
     this.isSubmitted = true;
-    
-    this.expenseService.addExpense(this.expenseData).subscribe({
-      next: () => {
-        Swal.fire({
-          title: 'Success',
-          text: 'Expense added successfully',
-          icon: 'success',
-          confirmButtonText: 'OK!',
-          allowOutsideClick: false,
-          background: '#222', // Dark theme
-          color: '#fff' // White text
-        });
+    if(this.isUpdate == true){
+      this.expenseService.updateExpenses(this.expenseData).subscribe({
+        next: () => {
+          Swal.fire({
+            title: 'Success',
+            text: 'Expense update successfully',
+            icon: 'success',
+            confirmButtonText: 'OK!',
+            allowOutsideClick: false,
+            background: '#222', // Dark theme
+            color: '#fff' // White text
+          });
+  
+          this.expenseData = { name: '', category: '', expenditure: null, date: '' };
+          this.isSubmitted = false;
+          this.modalService.dismissAll();
+          this.onClickHome();
+        },
+        error: (error) => console.error('Error:', error)
+      });
+    }
+    else{
+      this.expenseService.addExpense(this.expenseData).subscribe({
+        next: () => {
+          Swal.fire({
+            title: 'Success',
+            text: 'Expense added successfully',
+            icon: 'success',
+            confirmButtonText: 'OK!',
+            allowOutsideClick: false,
+            background: '#222', // Dark theme
+            color: '#fff' // White text
+          });
+  
+          this.expenseData = { name: '', category: '', expenditure: null, date: '' };
+          this.isSubmitted = false;
+          this.modalService.dismissAll();
+          this.onClickHome();
+        },
+        error: (error) => console.error('Error:', error)
+      });
+    }
+  }
 
-        this.expenseData = { name: '', category: '', expenditure: null, date: '' };
-        this.isSubmitted = false;
-        this.modalService.dismissAll();
-        this.onClickHome();
-      },
-      error: (error) => console.error('Error:', error)
-    });
+  updateExpensive(data,content){
+    this.isUpdate = true;
+    this.modalService.open(content, { centered: true, size: 'md' });
+
+    this.expenseData.expenditure = data.expenditure;
+    this.expenseData.name = data.name;
+    this.expenseData.date = data.date?.split("T")[0];
+    this.expenseData.category = data.category;
   }
 }
 
