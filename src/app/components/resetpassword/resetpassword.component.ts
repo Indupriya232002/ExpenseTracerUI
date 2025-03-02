@@ -138,14 +138,14 @@ export class ResetpasswordComponent implements OnInit {
    resetPassword() {
     const email = localStorage.getItem('email');  // Retrieve reset token from local storage
 
-    if (!email) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Email Missing',
-        text: 'Email is missing to reset your password.'
-      });
-      return;  // Early exit if email is missing
-    }
+    // if (!email) {
+    //   Swal.fire({
+    //     icon: 'error',
+    //     title: 'Email Missing',
+    //     text: 'Email is missing to reset your password.'
+    //   });
+    //   return;  // Early exit if email is missing
+    // }
   
     
     this.validateNewPassword = false;
