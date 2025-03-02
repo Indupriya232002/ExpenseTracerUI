@@ -240,7 +240,7 @@ filterExpenses(): void {
         }
       ]
     }
-    this.expensiveList = [];
+  
   });
 }
 
